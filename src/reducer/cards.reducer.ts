@@ -8,7 +8,7 @@ export function cardListReducer(
 ) {
   switch (action.type) {
     case cardListActions.load:
-      return action.payload;
+      return action.payload as PokemonStructure[];
     default:
       return state;
   }

@@ -1,12 +1,3 @@
-export type LoadPokemonStructure = {
-  results: [
-    {
-      name: string;
-      url: string;
-    }
-  ];
-};
-
 export type PokemonStructure = {
   id: number;
   name: string;
