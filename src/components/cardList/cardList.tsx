@@ -1,14 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
-import { useCardList } from "../../hooks/use.cardList";
-import PokeApi from "../../services/repository/pokeapi.repo";
+import { useEffect, useState } from "react";
+import { usePokemon } from "../../hooks/use.Pokemon";
 import { PokemonStructure } from "../../models/pokemon";
+import "./cardList.css";
 
 export default function CardList() {
-  const { pokeState, loadPokemonList } = useCardList(new PokeApi());
+  const [offset, setOffset] = useState(0);
+  const { pokeState, loadPokemonList } = usePokemon(offset);
+  function handleNextOffset() {
+    setOffset(offset + 1);
+  }
+  function handlePrevOffset() {
+    setOffset(offset - 1);
+  }
   useEffect(() => {
     loadPokemonList();
-  }, []);
+  }, [loadPokemonList]);
   console.log(pokeState);
   return (
     <div className="CardList">
@@ -16,11 +22,14 @@ export default function CardList() {
       <ul className="CardList__ul">
         {pokeState?.map((item: PokemonStructure) => (
           <div>
-            <li>{item.name}</li>
+            <li key={item.id}>{item.name}</li>
             <img src={item.sprites.front_default} alt={item.name}></img>
           </div>
         ))}
       </ul>
+      {offset >= 1 ? <button onClick={handlePrevOffset}>Previous</button> : ""}
+
+      <button onClick={handleNextOffset}>Next</button>
     </div>
   );
 }

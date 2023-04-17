@@ -4,17 +4,18 @@ import { cardListReducer } from "../reducer/cards.reducer";
 import PokeApi from "../services/repository/pokeapi.repo";
 import * as ac from "../reducer/cards.action.creator";
 
-export function useCardList(repo: PokeApi) {
+export function usePokemon(offset: number = 0) {
   const initialState: PokemonStructure[] = [];
   const [pokeState, dispatch] = useReducer(cardListReducer, initialState);
 
   const loadPokemonList = useCallback(async () => {
+    const repo = new PokeApi();
     try {
-      const cards = (await repo.loadPokemon()) as PokemonStructure[];
+      const cards = (await repo.loadPokemon(offset)) as PokemonStructure[];
       dispatch(ac.loadCardsCreator(cards));
     } catch (error) {
       console.log(error);
     }
-  }, [repo]);
+  }, [offset]);
   return { pokeState, loadPokemonList };
 }
