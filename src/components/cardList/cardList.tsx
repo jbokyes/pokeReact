@@ -29,7 +29,11 @@ export default function CardList() {
       </ul>
       {offset >= 1 ? <button onClick={handlePrevOffset}>Previous</button> : ""}
 
-      <button onClick={handleNextOffset}>Next</button>
+      {offset <= Math.floor(898 / 12) ? (
+        <button onClick={handleNextOffset}>Next</button>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
