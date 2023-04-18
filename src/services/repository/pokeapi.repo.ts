@@ -9,9 +9,9 @@ export default class PokeApi {
     this.url = "https://pokeapi.co/api/v2/pokemon?limit=12&offset=";
   }
 
-  async loadPokemon() {
+  async loadPokemon(offset: number = 0) {
     try {
-      const getPokemon = await fetch(this.url);
+      const getPokemon = await fetch(this.url + (offset * 12).toString());
       const data = await getPokemon.json();
       const pokemonInfo = data.results.map(async (e: BasePokeResult) => {
         const pokemonResult = await fetch(e.url);
