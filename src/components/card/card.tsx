@@ -5,9 +5,9 @@ import "./card.css";
 export function Card(props: PokemonStructure) {
   const [imageRotate, setImageRotate] = useState("");
   const handleRotate = () => {
-    imageRotate !== props.sprites.front_default
-      ? setImageRotate(props.sprites.front_default)
-      : setImageRotate(props.sprites.back_default);
+    imageRotate !== props.sprites.back_default
+      ? setImageRotate(props.sprites.back_default)
+      : setImageRotate(props.sprites.front_default);
   };
   return (
     <div className="pokemon-card">
