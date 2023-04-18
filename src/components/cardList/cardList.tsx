@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { usePokemon } from "../../hooks/use.Pokemon";
 import { PokemonStructure } from "../../models/pokemon";
 import "./cardList.css";
+import { Card } from "../card/card";
 
 export default function CardList() {
   const [offset, setOffset] = useState(0);
@@ -21,10 +22,7 @@ export default function CardList() {
       <h3>Poke List</h3>
       <ul className="CardList__ul">
         {pokeState?.map((item: PokemonStructure) => (
-          <div>
-            <li key={item.id}>{item.name}</li>
-            <img src={item.sprites.front_default} alt={item.name}></img>
-          </div>
+          <Card {...item}></Card>
         ))}
       </ul>
       {offset >= 1 ? <button onClick={handlePrevOffset}>Previous</button> : ""}
