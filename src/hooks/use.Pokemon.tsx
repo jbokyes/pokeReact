@@ -3,7 +3,7 @@ import { PokemonStructure } from "../models/pokemon";
 import { cardListReducer } from "../reducer/cards.reducer";
 import PokeApi from "../services/repository/pokeapi.repo";
 import * as ac from "../reducer/cards.action.creator";
-
+export type usePokemonStructure = ReturnType<typeof usePokemon>;
 export function usePokemon(offset: number = 0) {
   const initialState: PokemonStructure[] = [];
   const [pokeState, dispatch] = useReducer(cardListReducer, initialState);

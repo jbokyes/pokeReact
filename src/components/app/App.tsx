@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import CardList from "../cardList/cardList";
+import { AppRouter } from "../app.router/app.router";
 
 export type MenuOption = {
   label: string;
@@ -16,7 +16,7 @@ function App() {
   return (
     <div>
       <h1>Pokeapi React</h1>
-      <CardList></CardList>
+      <AppRouter menuOptions={menuOptions}></AppRouter>
     </div>
   );
 }
