@@ -11,6 +11,7 @@ export function Card(props: PokemonStructure) {
   };
   return (
     <div className="pokemon-card">
+      <li>{props.id}</li>
       <li>
         <img
           src={imageRotate || props.sprites.front_default}
