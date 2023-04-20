@@ -6,7 +6,7 @@ import { Card } from "../card/card";
 
 export default function CardList() {
   const [offset, setOffset] = useState(0);
-  const { pokeState, loadPokemonList } = usePokemon(offset);
+  const { pokeState, loadPokemonListOffset } = usePokemon(offset);
   function handleNextOffset() {
     setOffset(offset + 1);
   }
@@ -14,8 +14,8 @@ export default function CardList() {
     setOffset(offset - 1);
   }
   useEffect(() => {
-    loadPokemonList();
-  }, [loadPokemonList]);
+    loadPokemonListOffset();
+  }, [loadPokemonListOffset]);
   console.log(pokeState);
   return (
     <div className="CardList">

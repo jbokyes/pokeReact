@@ -6,9 +6,7 @@ export function PokemonContextProvider({
 }: {
   children: JSX.Element;
 }) {
-  const context = {
-    ...usePokemon(),
-  };
+  const context = usePokemon();
   return (
     <PokemonContext.Provider value={context}>
       {children}

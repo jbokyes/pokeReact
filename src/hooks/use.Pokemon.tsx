@@ -11,11 +11,23 @@ export function usePokemon(offset: number = 0) {
   const loadPokemonList = useCallback(async () => {
     const repo = new PokeApi();
     try {
-      const cards = (await repo.loadPokemon(offset)) as PokemonStructure[];
+      const cards = (await repo.loadPokemon()) as PokemonStructure[];
+      dispatch(ac.loadCardsCreator(cards));
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const loadPokemonListOffset = useCallback(async () => {
+    const repo = new PokeApi();
+    try {
+      const cards = (await repo.loadPokemonOffset(
+        offset
+      )) as PokemonStructure[];
       dispatch(ac.loadCardsCreator(cards));
     } catch (error) {
       console.log(error);
     }
   }, [offset]);
-  return { pokeState, loadPokemonList };
+  return { pokeState, loadPokemonList, loadPokemonListOffset };
 }

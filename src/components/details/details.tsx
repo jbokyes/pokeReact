@@ -6,7 +6,7 @@ export default function Details() {
   console.log(pokeState);
   return (
     <section className="details">
-      <img src={pokeState[0].sprites.front_default} alt="" />
+      <img src={pokeState[0]?.sprites.front_default} alt="" />
     </section>
   );
 }
