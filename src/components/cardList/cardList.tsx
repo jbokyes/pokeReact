@@ -22,7 +22,7 @@ export default function CardList() {
       <h3>Poke List</h3>
       <ul className="CardList__ul">
         {pokeState?.map((item: PokemonStructure) => (
-          <Card {...item}></Card>
+          <Card {...item} key={item.id}></Card>
         ))}
       </ul>
       {offset >= 1 ? <button onClick={handlePrevOffset}>Previous</button> : ""}
